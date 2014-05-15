@@ -1,0 +1,12 @@
+title: Clark Du | Developer
+author: Jeremias Menichelli
+
+port: 4000
+auto: true
+safe: true
+server: true
+pygments: true
+permalink: /:year/:month/:title
+encoding: utf-8
+gems:
+  - jekyll-sitemap
