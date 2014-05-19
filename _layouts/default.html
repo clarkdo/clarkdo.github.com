@@ -1,6 +1,7 @@
 {% include header.html %}
 
 {{ content }}
-{% include sidebar_recent_comments.html  %}
+{% if page.comments %}
 {% include disqus_comment.html  %}
+{% endif %}
 {% include footer.html %}
