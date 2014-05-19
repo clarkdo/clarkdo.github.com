@@ -24,17 +24,12 @@ layout: default
 				<p class="resume">{{ site.posts[0].resume }}</p>
 			{% endif %}
 			<a class="cta-btn" href="{{ site.posts[0].url }}">Go to the post</a>
-		</div>
+		</div>		
+		{% include sidebar_recent_comments.html %}
 	</div>
 </section>
 {% endif %}
 
-
-<section class="recent-comments">
-	<div class="container">
-		{% include sidebar_recent_comments.html %}
-	</div>
-</section>
 <!-- <section class="main">
 	<div class="container">
 		<h2><span>Experience</span></h2>
