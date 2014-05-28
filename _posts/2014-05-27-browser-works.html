@@ -62,6 +62,15 @@ resume:
 &lt;/body&gt;
 &lt;/html&gt;</code>
         </pre>
+        <pre>
+            <code>public class JdbcTemplate extends JdbcAccessor implements JdbcOperations {
+
+    private static final String RETURN_RESULT_SET_PREFIX = "#result-set-";
+
+    private static final String RETURN_UPDATE_COUNT_PREFIX = "#update-count-";
+
+}</code>
+        </pre>
         <p>上面这段HTML会解析成这样：</p>
         <p style="text-align: center;"><img class="aligncenter  wp-image-9669" alt="" src="http://coolshell.cn//wp-content/uploads/2013/05/DOM-Tree-01.jpg" width="456" height="300"></p>
         <p>下面是另一个有SVG标签的情况。</p>
