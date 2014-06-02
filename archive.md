@@ -1,20 +1,14 @@
 ---
-layout: default
-title: Home
+layout: page
+title: Archives
 ---
-
 <div class="posts">
   {% for post in paginator.posts %}
   <div class="post">
-    <h1 class="post-title">
-      <a href="{{ post.url }}">
-        {{ post.title }}
-      </a>
-    </h1>
-
     <span class="post-date">{{ post.date | date_to_string }}</span>
-
-    {{ post.content }}
+    <a href="{{ post.url }}">
+      {{ post.title }}
+    </a>
   </div>
   {% endfor %}
 </div>
@@ -35,4 +29,3 @@ title: Home
     <span class="pagination-item newer">Newer</span>
   {% endif %}
 </div>
-

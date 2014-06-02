@@ -1,12 +1,23 @@
-title: Clark Du | Developer
-author: Jeremias Menichelli
+# Dependencies
+markdown:         redcarpet
+highlighter:      pygments
 
-port: 4000
-auto: true
-safe: true
-server: true
-pygments: true
-permalink: /:year/:month/:title
-encoding: utf-8
-gems:
-  - jekyll-sitemap
+# Permalinks
+permalink:        pretty
+
+# Setup
+title:            Clark To Do
+tagline:          'The bolg of Clark'
+description:      '<p><a href="http://weibo.com/u/1802092940" target="_blank">@clarkdo</a></p> <p>Clark Blog </p>'
+url:              http://clarkdo.github.io/
+paginate:         5
+
+author:
+  name:           'Clark Du'
+  url:            http://weibo.com/u/1802092940
+
+# Custom vars
+version:          1.0.0
+
+github:
+  repo:           https://github.com/clarkdo/clarkdo.github.com
