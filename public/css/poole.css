@@ -425,3 +425,7 @@ a.pagination-item:hover {
     border-bottom-right-radius: 4px;
   }
 }
+
+.title-right {
+  margin-right:25px;
+  }
