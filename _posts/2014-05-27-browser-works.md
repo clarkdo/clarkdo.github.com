@@ -50,46 +50,34 @@ comments: true
         <!--excerpt-->
         <h4>DOM解析</h4>
         <p>HTML的DOM Tree解析如下：</p>
-        <pre>
-            <code>&lt;html&gt;
-                &lt;head&gt;
-                &lt;title&gt;Web page parsing&lt;/title&gt;
-                &lt;/head&gt;
-                &lt;body&gt;
-                &lt;div&gt;
-                &lt;h1&gt;Web page parsing&lt;/h1&gt;
-                &lt;p&gt;This is an example Web page.&lt;/p&gt;
-                &lt;/div&gt;
-                &lt;/body&gt;
-                &lt;/html&gt;</code>
-            </pre>
+        {% highlight html %}<html>
+        <head>
+            <title>Web page parsing</title>
+        </head>
+        <body>
+            <div>
+                <h1>Web page parsing</h1>
+                <p>This is an example Web page.</p>
+            </div>
+        </body>
+        </html>{% endhighlight %}
             <p>上面这段HTML会解析成这样：</p>
             <p style="text-align: center;"><img class="aligncenter  wp-image-9669" alt="" src="http://coolshell.cn//wp-content/uploads/2013/05/DOM-Tree-01.jpg" width="456" height="300"></p>
             <p>下面是另一个有SVG标签的情况。</p>
             <p style="text-align: center;"><img class="aligncenter  wp-image-9670" alt="" src="http://coolshell.cn//wp-content/uploads/2013/05/DOM-Tree-02.jpg" width="408" height="320"></p>
             <h4>CSS解析</h4>
-            <pre>
-                <code>public class JdbcTemplate extends JdbcAccessor implements JdbcOperations {
-
-                    private static final String RETURN_RESULT_SET_PREFIX = "#result-set-";
-
-                    private static final String RETURN_UPDATE_COUNT_PREFIX = "#update-count-";
-
-                }</code>
-                </pre>
                 <p>CSS的解析大概是下面这个样子（下面主要说的是Gecko也就是Firefox的玩法），假设我们有下面的HTML文档：</p>
 
-                <pre>
-                <code>&lt;doc&gt;
-                &lt;title&gt;A few quotes&lt;/title&gt;
-                &lt;para&gt;
-                Franklin said that &lt;quote&gt;"A penny saved is a penny earned."&lt;/quote&gt;
-                &lt;/para&gt;
-                &lt;para&gt;
-                FDR said &lt;quote&gt;"We have nothing to fear but &lt;span&gt;fear itself.&lt;/span&gt;"&lt;/quote&gt;
-                &lt;/para&gt;
-                &lt;/doc&gt;</code>
-                </pre>
+                {% highlight html %}<doc>
+<title>A few quotes</title>
+<para>
+  Franklin said that <quote>"A penny saved is a penny earned."</quote>
+</para>
+<para>
+  FDR said <quote>"We have nothing to fear but <span>fear itself.</span>"</quote>
+</para>
+</doc>{% endhighlight %}
+
                 <p>于是DOM Tree是这个样子：</p>
                 <p><img class="aligncenter size-full wp-image-9672" alt="" src="http://coolshell.cn//wp-content/uploads/2013/05/DOM-Tree-Example.jpg" width="368" height="318"></p>
                 <p>然后我们的CSS文档是这样的：</p>
