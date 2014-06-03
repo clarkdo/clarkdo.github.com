@@ -47,82 +47,83 @@ comments: true
             <li>然后，计算每个Frame（也就是每个Element）的位置，这又叫layout和reflow过程。</li>
         </ul>
         <p>3）最后通过调用操作系统Native GUI的API绘制。</p>
+        <!--excerpt-->
         <h4>DOM解析</h4>
         <p>HTML的DOM Tree解析如下：</p>
         <pre>
             <code>&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;Web page parsing&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;div&gt;
-        &lt;h1&gt;Web page parsing&lt;/h1&gt;
-        &lt;p&gt;This is an example Web page.&lt;/p&gt;
-    &lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code>
-        </pre>
-        <p>上面这段HTML会解析成这样：</p>
-        <p style="text-align: center;"><img class="aligncenter  wp-image-9669" alt="" src="http://coolshell.cn//wp-content/uploads/2013/05/DOM-Tree-01.jpg" width="456" height="300"></p>
-        <p>下面是另一个有SVG标签的情况。</p>
-        <p style="text-align: center;"><img class="aligncenter  wp-image-9670" alt="" src="http://coolshell.cn//wp-content/uploads/2013/05/DOM-Tree-02.jpg" width="408" height="320"></p>
-        <h4>CSS解析</h4>
-        <pre>
-            <code>public class JdbcTemplate extends JdbcAccessor implements JdbcOperations {
+                &lt;head&gt;
+                &lt;title&gt;Web page parsing&lt;/title&gt;
+                &lt;/head&gt;
+                &lt;body&gt;
+                &lt;div&gt;
+                &lt;h1&gt;Web page parsing&lt;/h1&gt;
+                &lt;p&gt;This is an example Web page.&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;/body&gt;
+                &lt;/html&gt;</code>
+            </pre>
+            <p>上面这段HTML会解析成这样：</p>
+            <p style="text-align: center;"><img class="aligncenter  wp-image-9669" alt="" src="http://coolshell.cn//wp-content/uploads/2013/05/DOM-Tree-01.jpg" width="456" height="300"></p>
+            <p>下面是另一个有SVG标签的情况。</p>
+            <p style="text-align: center;"><img class="aligncenter  wp-image-9670" alt="" src="http://coolshell.cn//wp-content/uploads/2013/05/DOM-Tree-02.jpg" width="408" height="320"></p>
+            <h4>CSS解析</h4>
+            <pre>
+                <code>public class JdbcTemplate extends JdbcAccessor implements JdbcOperations {
 
-    private static final String RETURN_RESULT_SET_PREFIX = "#result-set-";
+                    private static final String RETURN_RESULT_SET_PREFIX = "#result-set-";
 
-    private static final String RETURN_UPDATE_COUNT_PREFIX = "#update-count-";
+                    private static final String RETURN_UPDATE_COUNT_PREFIX = "#update-count-";
 
-}</code>
-        </pre>
-        <p>CSS的解析大概是下面这个样子（下面主要说的是Gecko也就是Firefox的玩法），假设我们有下面的HTML文档：</p>
+                }</code>
+                </pre>
+                <p>CSS的解析大概是下面这个样子（下面主要说的是Gecko也就是Firefox的玩法），假设我们有下面的HTML文档：</p>
 
-        <pre>
-            <code>&lt;doc&gt;
-    &lt;title&gt;A few quotes&lt;/title&gt;
-    &lt;para&gt;
-      Franklin said that &lt;quote&gt;"A penny saved is a penny earned."&lt;/quote&gt;
-    &lt;/para&gt;
-    &lt;para&gt;
-      FDR said &lt;quote&gt;"We have nothing to fear but &lt;span&gt;fear itself.&lt;/span&gt;"&lt;/quote&gt;
-    &lt;/para&gt;
-&lt;/doc&gt;</code>
-        </pre>
-  <p>于是DOM Tree是这个样子：</p>
-  <p><img class="aligncenter size-full wp-image-9672" alt="" src="http://coolshell.cn//wp-content/uploads/2013/05/DOM-Tree-Example.jpg" width="368" height="318"></p>
-  <p>然后我们的CSS文档是这样的：</p>
-  <div><div id="highlighter_265734" class="syntaxhighlighter coolshell_syntaxhighlighter xml"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="xml spaces">&nbsp;</code><code class="xml plain">/* rule 1 */ doc { display: block; text-indent: 1em; }</code></div><div class="line number2 index1 alt1"><code class="xml plain">/* rule 2 */ title { display: block; font-size: 3em; }</code></div><div class="line number3 index2 alt2"><code class="xml plain">/* rule 3 */ para { display: block; }</code></div><div class="line number4 index3 alt1"><code class="xml plain">/* rule 4 */ [class="emph"] { font-style: italic; }</code></div></div></td></tr></tbody></table></div></div>
-  <p>于是我们的CSS Rule Tree会是这个样子：</p>
-  <p><img class="aligncenter size-full wp-image-9673" alt="" src="http://coolshell.cn//wp-content/uploads/2013/05/CSS-Rule-Tree-Example.jpg" width="397" height="238"></p>
-  <p>注意，图中的第4条规则出现了两次，一次是独立的，一次是在规则3的子结点。所以，我们可以知道，建立CSS Rule Tree是需要比照着DOM Tree来的。CSS匹配DOM Tree主要是从右到左解析CSS的Selector，好多人以为这个事会比较快，其实并不一定。关键还看我们的CSS的Selector怎么写了。</p>
-  <p><strong>注意：CSS匹配HTML元素是一个相当复杂和有性能问题的事情。所以，你就会在N多地方看到很多人都告诉你，DOM树要小，CSS尽量用id和class，千万不要过渡层叠下去，……</strong></p>
-  <p>通过这两个树，我们可以得到一个叫Style Context Tree，也就是下面这样（把CSS Rule结点Attach到DOM Tree上）：</p>
-  <p><img class="aligncenter size-full wp-image-9674" alt="" src="http://coolshell.cn//wp-content/uploads/2013/05/CSS-Content-Tree-Example.jpg" width="405" height="318"></p>
-  <p>所以，Firefox基本上来说是通过CSS 解析 生成 CSS Rule Tree，然后，通过比对DOM生成Style Context Tree，然后Firefox通过把Style Context Tree和其Render Tree（Frame Tree）关联上，就完成了。注意：Render Tree会把一些不可见的结点去除掉。而<strong>Firefox中所谓的Frame就是一个DOM结点，不要被其名字所迷惑了</strong>。</p>
-  <p style="text-align: center;"><img class="aligncenter  wp-image-9677" alt="" src="http://coolshell.cn//wp-content/uploads/2013/05/Firefox-style-context-tree.png" width="328" height="366"></p>
-  <p>注：Webkit不像Firefox要用两个树来干这个，Webkit也有Style对象，它直接把这个Style对象存在了相应的DOM结点上了。</p>
-  <h4>渲染</h4>
-  <p>渲染的流程基本上如下（黄色的四个步骤）：</p>
-  <ol>
-    <li>计算CSS样式</li>
-    <li>构建Render Tree</li>
-    <li>Layout – 定位坐标和大小，是否换行，各种position, overflow, z-index属性 ……</li>
-    <li>正式开画</li>
-</ol>
-<p style="text-align: center;"><img class="aligncenter  wp-image-9675" alt="" src="http://coolshell.cn//wp-content/uploads/2013/05/Render-Process-Skipping.jpg" width="712" height="196"></p>
-<p style="text-align: left;">注意：上图流程中有很多连接线，这表示了Javascript动态修改了DOM属性或是CSS属会导致重新Layout，有些改变不会，就是那些指到天上的箭头，比如，修改后的CSS rule没有被匹配到，等。</p>
-<p style="text-align: left;">这里重要要说两个概念，一个是Reflow，另一个是Repaint。这两个不是一回事。</p>
-<ul>
-    <li>Repaint——屏幕的一部分要重画，比如某个CSS的背景色变了。但是元素的几何尺寸没有变。</li>
-</ul>
-<ul>
-    <li>Reflow——意味着元件的几何尺寸变了，我们需要重新验证并计算Render Tree。是Render Tree的一部分或全部发生了变化。这就是Reflow，或是Layout。（<strong>HTML使用的是flow based layout，也就是流式布局，所以，如果某元件的几何尺寸发生了变化，需要重新布局，也就叫reflow</strong>）reflow 会从&lt;html&gt;这个root frame开始递归往下，依次计算所有的结点几何尺寸和位置，在reflow过程中，可能会增加一些frame，比如一个文本字符串必需被包装起来。</li>
-</ul>
-<p>下面是一个打开Wikipedia时的Layout/reflow的视频（注：HTML在初始化的时候也会做一次reflow，叫 <dfn>intial reflow</dfn>），你可以感受一下：</p>
-<p></p><center><object width="480" height="400" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0" align="middle"><param name="src" value="http://opengg.spring-world.net/flashes/youku/loader.swf?VideoIDS=XMzI5MDg0OTA0&amp;embedid=MTI0LjkzLjE5Ny4xMgI4MjI3MTIyNgJjb29sc2hlbGwuY24CL2FydGljbGVzLzk2NjYuaHRtbA%3D%3D&amp;wd=&amp;vext=pid%3D%26emb%3DMTI0LjkzLjE5Ny4xMgI4MjI3MTIyNgJjb29sc2hlbGwuY24CL2FydGljbGVzLzk2NjYuaHRtbA%3D%3D%26bc%3D%26type%3D0"><param name="allowfullscreen" value="true"><param name="quality" value="high"><param name="allowscriptaccess" value="always"><embed width="480" height="400" type="application/x-shockwave-flash" src="http://opengg.spring-world.net/youkuyidiantong/player.swf?showAd=0&amp;VideoIDS=XMzI5MDg0OTA0" allowfullscreen="true" quality="high" allowscriptaccess="always" align="middle"></object></center>Reflow的成本比Repaint的成本高得多的多。DOM Tree里的每个结点都会有reflow方法，一个结点的reflow很有可能导致子结点，甚至父点以及同级结点的reflow。<strong>在一些高性能的电脑上也许还没什么，但是如果reflow发生在手机上，那么这个过程是非常痛苦和耗电的</strong>。<p></p>
-<p>所以，下面这些动作有很大可能会是成本比较高的。</p>
-<ul>
+                <pre>
+                <code>&lt;doc&gt;
+                &lt;title&gt;A few quotes&lt;/title&gt;
+                &lt;para&gt;
+                Franklin said that &lt;quote&gt;"A penny saved is a penny earned."&lt;/quote&gt;
+                &lt;/para&gt;
+                &lt;para&gt;
+                FDR said &lt;quote&gt;"We have nothing to fear but &lt;span&gt;fear itself.&lt;/span&gt;"&lt;/quote&gt;
+                &lt;/para&gt;
+                &lt;/doc&gt;</code>
+                </pre>
+                <p>于是DOM Tree是这个样子：</p>
+                <p><img class="aligncenter size-full wp-image-9672" alt="" src="http://coolshell.cn//wp-content/uploads/2013/05/DOM-Tree-Example.jpg" width="368" height="318"></p>
+                <p>然后我们的CSS文档是这样的：</p>
+                <div><div id="highlighter_265734" class="syntaxhighlighter coolshell_syntaxhighlighter xml"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="xml spaces">&nbsp;</code><code class="xml plain">/* rule 1 */ doc { display: block; text-indent: 1em; }</code></div><div class="line number2 index1 alt1"><code class="xml plain">/* rule 2 */ title { display: block; font-size: 3em; }</code></div><div class="line number3 index2 alt2"><code class="xml plain">/* rule 3 */ para { display: block; }</code></div><div class="line number4 index3 alt1"><code class="xml plain">/* rule 4 */ [class="emph"] { font-style: italic; }</code></div></div></td></tr></tbody></table></div></div>
+                <p>于是我们的CSS Rule Tree会是这个样子：</p>
+                <p><img class="aligncenter size-full wp-image-9673" alt="" src="http://coolshell.cn//wp-content/uploads/2013/05/CSS-Rule-Tree-Example.jpg" width="397" height="238"></p>
+                <p>注意，图中的第4条规则出现了两次，一次是独立的，一次是在规则3的子结点。所以，我们可以知道，建立CSS Rule Tree是需要比照着DOM Tree来的。CSS匹配DOM Tree主要是从右到左解析CSS的Selector，好多人以为这个事会比较快，其实并不一定。关键还看我们的CSS的Selector怎么写了。</p>
+                <p><strong>注意：CSS匹配HTML元素是一个相当复杂和有性能问题的事情。所以，你就会在N多地方看到很多人都告诉你，DOM树要小，CSS尽量用id和class，千万不要过渡层叠下去，……</strong></p>
+                <p>通过这两个树，我们可以得到一个叫Style Context Tree，也就是下面这样（把CSS Rule结点Attach到DOM Tree上）：</p>
+                <p><img class="aligncenter size-full wp-image-9674" alt="" src="http://coolshell.cn//wp-content/uploads/2013/05/CSS-Content-Tree-Example.jpg" width="405" height="318"></p>
+                <p>所以，Firefox基本上来说是通过CSS 解析 生成 CSS Rule Tree，然后，通过比对DOM生成Style Context Tree，然后Firefox通过把Style Context Tree和其Render Tree（Frame Tree）关联上，就完成了。注意：Render Tree会把一些不可见的结点去除掉。而<strong>Firefox中所谓的Frame就是一个DOM结点，不要被其名字所迷惑了</strong>。</p>
+                <p style="text-align: center;"><img class="aligncenter  wp-image-9677" alt="" src="http://coolshell.cn//wp-content/uploads/2013/05/Firefox-style-context-tree.png" width="328" height="366"></p>
+                <p>注：Webkit不像Firefox要用两个树来干这个，Webkit也有Style对象，它直接把这个Style对象存在了相应的DOM结点上了。</p>
+                <h4>渲染</h4>
+                <p>渲染的流程基本上如下（黄色的四个步骤）：</p>
+                <ol>
+                <li>计算CSS样式</li>
+                <li>构建Render Tree</li>
+                <li>Layout – 定位坐标和大小，是否换行，各种position, overflow, z-index属性 ……</li>
+                <li>正式开画</li>
+            </ol>
+            <p style="text-align: center;"><img class="aligncenter  wp-image-9675" alt="" src="http://coolshell.cn//wp-content/uploads/2013/05/Render-Process-Skipping.jpg" width="712" height="196"></p>
+            <p style="text-align: left;">注意：上图流程中有很多连接线，这表示了Javascript动态修改了DOM属性或是CSS属会导致重新Layout，有些改变不会，就是那些指到天上的箭头，比如，修改后的CSS rule没有被匹配到，等。</p>
+            <p style="text-align: left;">这里重要要说两个概念，一个是Reflow，另一个是Repaint。这两个不是一回事。</p>
+            <ul>
+            <li>Repaint——屏幕的一部分要重画，比如某个CSS的背景色变了。但是元素的几何尺寸没有变。</li>
+        </ul>
+        <ul>
+        <li>Reflow——意味着元件的几何尺寸变了，我们需要重新验证并计算Render Tree。是Render Tree的一部分或全部发生了变化。这就是Reflow，或是Layout。（<strong>HTML使用的是flow based layout，也就是流式布局，所以，如果某元件的几何尺寸发生了变化，需要重新布局，也就叫reflow</strong>）reflow 会从&lt;html&gt;这个root frame开始递归往下，依次计算所有的结点几何尺寸和位置，在reflow过程中，可能会增加一些frame，比如一个文本字符串必需被包装起来。</li>
+    </ul>
+    <p>下面是一个打开Wikipedia时的Layout/reflow的视频（注：HTML在初始化的时候也会做一次reflow，叫 <dfn>intial reflow</dfn>），你可以感受一下：</p>
+    <p></p><center><object width="480" height="400" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0" align="middle"><param name="src" value="http://opengg.spring-world.net/flashes/youku/loader.swf?VideoIDS=XMzI5MDg0OTA0&amp;embedid=MTI0LjkzLjE5Ny4xMgI4MjI3MTIyNgJjb29sc2hlbGwuY24CL2FydGljbGVzLzk2NjYuaHRtbA%3D%3D&amp;wd=&amp;vext=pid%3D%26emb%3DMTI0LjkzLjE5Ny4xMgI4MjI3MTIyNgJjb29sc2hlbGwuY24CL2FydGljbGVzLzk2NjYuaHRtbA%3D%3D%26bc%3D%26type%3D0"><param name="allowfullscreen" value="true"><param name="quality" value="high"><param name="allowscriptaccess" value="always"><embed width="480" height="400" type="application/x-shockwave-flash" src="http://opengg.spring-world.net/youkuyidiantong/player.swf?showAd=0&amp;VideoIDS=XMzI5MDg0OTA0" allowfullscreen="true" quality="high" allowscriptaccess="always" align="middle"></object></center>Reflow的成本比Repaint的成本高得多的多。DOM Tree里的每个结点都会有reflow方法，一个结点的reflow很有可能导致子结点，甚至父点以及同级结点的reflow。<strong>在一些高性能的电脑上也许还没什么，但是如果reflow发生在手机上，那么这个过程是非常痛苦和耗电的</strong>。<p></p>
+    <p>所以，下面这些动作有很大可能会是成本比较高的。</p>
+    <ul>
     <li>当你增加、删除、修改DOM结点时，会导致Reflow或Repaint</li>
     <li>当你移动DOM的位置，或是搞个动画的时候。</li>
     <li>当你修改CSS样式的时候。</li>
