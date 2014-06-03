@@ -10,8 +10,6 @@ title:            Clark To Do
 tagline:          'The blog of Clark'
 description:      '<p><a href="http://weibo.com/u/1802092940" target="_blank">@clarkdo</a></p> <p>Clark Blog </p>'
 url:              http://clarkdo.github.io/
-paginate: 5
-paginate_path: "page:num"
 
 author:
   name:           'Clark Du'
