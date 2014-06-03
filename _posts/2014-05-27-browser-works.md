@@ -10,7 +10,8 @@ comments: true
     <h2>浏览器的渲染原理简介</h2>
     <div class="info">
         <span class="date">2013年5月22日</span>
-        <span class="author"><a href="http://coolshell.cn/articles/author/haoel" title="由陈皓发布" rel="author">陈皓</a></span>                                       <span class="addcomment"><a href="#respond">发表评论</a></span>
+        <span class="author"><a href="http://coolshell.cn/articles/author/haoel" title="由陈皓发布" rel="author">陈皓</a></span>        
+        <span class="addcomment"><a href="#respond">发表评论</a></span>
         <span class="comments"><a href="#comments">阅读评论</a></span>
         <span class="comments"> 64,688 人阅读  &nbsp;  &nbsp;</span>
         <div class="fixed"></div>
