@@ -12,7 +12,7 @@ description:      '<p><a href="http://weibo.com/u/1802092940" target="_blank">@c
 url:              http://clarkdo.github.io/
 paginate: 5
 paginate_path: "page:num"
-excerpt_separator: "\n"
+excerpt_separator: "\n\n\n"
 
 author:
   name:           'Clark Du'

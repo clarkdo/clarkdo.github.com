@@ -7,6 +7,8 @@ comments: true
 
 1.通过[rubyinstaller](http://rubyinstaller.org/downloads/)安装ruby。
 
+
+
 2.安装Ruby DevKit,详见[Development-Kit wiki](https://github.com/oneclick/rubyinstaller/wiki/Development-Kit),DevKit是windows平台下编译和使用本地C/C++扩展包的工具。它就是用来模拟Linux平台下的make, gcc, sh来进行编译。安装完成后在DevKit根目录执行：
 {% highlight ruby %}
 ruby dk.rb init

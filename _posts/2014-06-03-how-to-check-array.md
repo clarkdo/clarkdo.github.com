@@ -8,6 +8,8 @@ How to check if an array (unsorted) contains a certain value? This is a very use
 </div>
 ##1. Four Different Ways to Check If an Array Contains a Value
 
+
+
 1.Using List:
 {% highlight js %}
 public static boolean useList(String[] arr, String targetValue) {
