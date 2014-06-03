@@ -1,0 +1,37 @@
+---
+layout: post
+title: Instsll jekyll on windows
+comments: true
+---
+本站通过jekyll来生成静态页面,jekyll是Ruby语音编写的，因此在windows系统上的安装于配置较Linux来说，相对繁琐一些，本人安装过程的步骤如下：
+1.通过[rubyinstaller](http://rubyinstaller.org/downloads/)安装ruby。
+2.安装Ruby DevKit,详见[Development-Kit wiki](https://github.com/oneclick/rubyinstaller/wiki/Development-Kit),DevKit是windows平台下编译和使用本地C/C++扩展包的工具。它就是用来模拟Linux平台下的make, gcc, sh来进行编译。安装完成后在DevKit根目录执行：
+{% highlight ruby %}
+ruby dk.rb init
+ruby dk.rb install
+{% endhighlight %}
+3.安装Jekyll,通过命令：
+{% highlight ruby %}
+gem install jekyll
+{% endhighlight %}
+> 由于Rubygems官方网站被Wall了，导致Ruby程序员在线安装软件gem包的时候无法顺利进行，往往需要借助VPN才能成功安装，淘宝网提供了Rubygems的国内镜像站：http://ruby.taobao.org/，执行以下命令替换：
+{% highlight ruby %}
+$ gem sources --remove https://rubygems.org/
+$ gem sources -a https://ruby.taobao.org/
+$ gem sources -l
+*** CURRENT SOURCES ***
+
+https://ruby.taobao.org
+# 请确保只有 ruby.taobao.org
+$ gem install rails
+{% endhighlight %}
+4.安装[Python](http://portablepython.com/wiki/Download),并添加App\Scripts与App至环境变量Path中。
+5.下载[distribute](https://pypi.python.org/pypi/distribute#downloads)，并安装，命令如下：
+{% highlight ruby %}
+python distribute_setup.py
+{% endhighlight %}
+6.安装Pygments，命令如下：
+{% highlight ruby %}
+easy_install Pygments
+{% endhighlight %}
+
