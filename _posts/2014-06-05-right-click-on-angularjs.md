@@ -1,0 +1,54 @@
+---
+layout: post
+title: How to handle right click in AngularJS
+comments: true
+---
+AngularJS中处理鼠标右键时间可以通过**contextmenu**实现,废话不多说,直接上代码:
+
+1.HTML
+
+{% highlight html %}
+<style type="text/css">
+.action {
+    cursor: pointer;
+    border: 1px solid black;
+    padding: 5px;
+}
+</style>
+<div ng-app="myApp" ng-controller="MyCtrl">
+    Right click me: 
+    <span class="action" 
+          ng-click="increment()"
+          ng-right-click="decrement()">{{value}}</span>    
+</div>    
+{% endhighlight %}
+
+
+
+2.JavaScript：
+{% highlight js %}
+var app = angular.module('myApp', []);
+function MyCtrl($scope) {
+    $scope.value = 50;
+    $scope.increment = function() {
+      $scope.value = $scope.value + 1;   
+    };
+    $scope.decrement = function() {
+      $scope.value = $scope.value - 1; 
+    };
+};
+
+app.directive('ngRightClick', function($parse) {
+    return function(scope, element, attrs) {
+        var fn = $parse(attrs.ngRightClick);
+        element.bind('contextmenu', function(event) {
+            scope.$apply(function() {
+                event.preventDefault();
+                fn(scope, {$event:event});
+            });
+        });
+    };
+});
+{% endhighlight %}
+
+> 样例代码通过左右键点击数字,对count进行加减操作.
