@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Instsll jekyll on windows
+title: Install jekyll on windows
 comments: true
 ---
 本站通过jekyll来生成静态页面,jekyll是Ruby语音编写的，因此在windows系统上的安装于配置较Linux来说，相对繁琐一些，本人安装过程的步骤如下：
