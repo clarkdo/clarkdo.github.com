@@ -1,0 +1,77 @@
+---
+layout: post
+title: JVM Statistics Monitoring Tool - jstat(To be continued)
+comments: true
+---
+jstat用于展现HostsSpot虚拟机器的性能统计信息(包括类加载,编译,堆内存等).
+
+语法: jstat [ *generalOption* | *outputOptions vmid* [*interval*[*s*|*ms*] [*count*]] ]
+
+##General Option
+general options在每次命令运行中, 只能指定一个
+###-help
+帮助信息.
+###-version
+版本信息.
+###-options
+统计信息选项的列表. 参见下方Output Options部分
+
+##OUTPUT OPTIONS
+<table>
+  <thead>
+    <tr>
+      <th>Option</th>
+      <th>Displays</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>class</td>
+      <td>类加载相关统计信息.</td>
+    </tr>
+    <tr>
+      <td>compiler</td>
+      <td>HotSpot实时编译器相关统计信息</td>
+    </tr>
+    <tr>
+      <td>gc</td>
+      <td>堆内存垃圾收集信息</td>
+    </tr>
+    <tr>
+      <td>gccapacity  Statistics of the capacities of the generations and their corresponding spaces.</td>
+      <td>不同代(young(Eden, survivor), old, perm)内存容量信息</td>
+    </tr>
+    <tr>
+      <td>gccause</td>
+      <td>垃圾收集概要信息(同 gcutil), 包括引起最近及当前垃圾回收事件的原因</td>
+    </tr>
+    <tr>
+      <td>gcnew</td>
+      <td>年轻代行为的统计信息</td>
+    </tr>
+    <tr>
+      <td>gcnewcapacity</td>
+      <td>年轻代大小以及其相应空间的西信息</td>
+    </tr>
+    <tr>
+      <td>gcold</td>
+      <td>年老代与永久代行为的统计信息</td>
+    </tr>
+    <tr>
+      <td>gcoldcapacity</td>
+      <td>年老代的大小</td>
+    </tr>
+    <tr>
+      <td>gcpermcapacity</td>
+      <td>永久代的大小</td>
+    </tr>
+    <tr>
+      <td>gcutil</td>
+      <td>垃圾收集概要信息</td>
+    </tr>
+    <tr>
+      <td>printcompilation</td>
+      <td>HotSpot编译方法统计信息</td>
+    </tr>
+  </tbody>
+</table>
