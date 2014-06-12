@@ -41,7 +41,7 @@ general options在每次命令运行中, 只能指定一个
     </tr>
     <tr>
       <td>gccapacity  Statistics of the capacities of the generations and their corresponding spaces.</td>
-      <td>不同代(young(Eden, survivor), old, perm)内存容量信息</td>
+      <td>不同代(young(Eden, Survivor), old, perm)内存容量信息</td>
     </tr>
     <tr>
       <td>gccause</td>
@@ -53,7 +53,7 @@ general options在每次命令运行中, 只能指定一个
     </tr>
     <tr>
       <td>gcnewcapacity</td>
-      <td>年轻代大小以及其相应空间的西信息</td>
+      <td>年轻代大小以及其相应空间的信息</td>
     </tr>
     <tr>
       <td>gcold</td>
@@ -61,11 +61,11 @@ general options在每次命令运行中, 只能指定一个
     </tr>
     <tr>
       <td>gcoldcapacity</td>
-      <td>年老代的大小</td>
+      <td>年老代的内存容量</td>
     </tr>
     <tr>
       <td>gcpermcapacity</td>
-      <td>永久代的大小</td>
+      <td>永久代的内存容量</td>
     </tr>
     <tr>
       <td>gcutil</td>
