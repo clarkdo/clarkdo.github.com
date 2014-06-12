@@ -7,6 +7,8 @@ jstat用于展现HostsSpot虚拟机器的性能统计信息(包括类加载,编�
 
 语法: jstat [ *generalOption* | *outputOptions vmid* [*interval*[*s*|*ms*] [*count*]] ]
 
+
+
 ##General Option
 general options在每次命令运行中, 只能指定一个
 ###-help
