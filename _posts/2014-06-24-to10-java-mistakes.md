@@ -5,7 +5,7 @@ comments: true
 ---
 下面总结了10个Java程序员最易犯的错误.
 
-##1.Array与ArrayList转换
+###1.Array与ArrayList转换
 
 将一个数组array转换为ArrayList,程序猿通常这样做：
 {% highlight java %}
@@ -23,7 +23,7 @@ ArrayList<String> arrayList = new ArrayList<String>(Arrays.asList(arr));
 {% endhighlight %}
 ArrayList的构造函数可以接收Collection类型,Collection同样是java.util.Arrays.ArrayList的基类.
 
-##2. 检测Array中是否包含某值
+###2. 检测Array中是否包含某值
 
 可以通过以下方式实现:
 {% highlight java %}
@@ -45,7 +45,7 @@ return false;
 {% endhighlight %}
 相较于第二段代码,第一段有更好的可读性.
 
-##3.通过循环在List中移除元素
+###3.通过循环在List中移除元素
 
 以下代码为在循环迭代中移除元素:
 {% highlight java %}
@@ -85,14 +85,14 @@ while (iter.hasNext()) {
 {% endhighlight %}
 .next()的调用必须发生在.remove()之前. 在增强for循环中,编译器将会使.next()的调用发生在remove操作之后, 这将会引发ConcurrentModificationException. 如果有兴趣,可用参考ArrayList.iterator()的源码.
 
-##4. Hashtable vs HashMap
+###4. Hashtable vs HashMap
 
 By conventions in algorithm, Hashtable is the name of the data structure. But in Java, the data structure's name is HashMap. One of the key differences between Hashtable and HashMap is that Hashtable is synchronized. So very often you don't need Hashtable, instead HashMap should be used.
 
 HashMap vs. TreeMap vs. Hashtable vs. LinkedHashMap
 Top 10 questions about Map
 
-##5. Use Raw Type of Collection
+###5. Use Raw Type of Collection
 
 In Java, raw type and unbounded wildcard type are easy to mixed together. Take Set for example, Set is raw type, while Set<?> is unbounded wildcard type.
 
@@ -115,17 +115,17 @@ Exception in thread "main" java.lang.ClassCastException: java.lang.Integer canno
 Using raw type collection is dangerous as the raw type collections skip the generic type checking and not safe. There are huge differences between Set, Set<?>, and Set<Object>. Check out
 Raw type vs. Unbounded wildcard and Type Erasure.
 
-##6. Access Level
+###6. Access Level
 
 Very often developers use public for class field. It is easy to get the field value by directly referencing, but this is a very bad design. The rule of thumb is giving access level for members as low as possible.
 
 public, default, protected, and private
 
-##7. ArrayList vs. LinkedList
+###7. ArrayList vs. LinkedList
 
 When developers do not know the difference between ArrayList and LinkedList, they often use ArrayList, because it looks familiar. However, there is a huge performance difference between them. In brief, LinkedList should be preferred if there are a large number of add/remove operations and there are not a lot of random access operations. Check out ArrayList vs. LinkedList to get more information about their performance if this is new to you.
 
-##8. Mutable vs. Immutable
+###8. Mutable vs. Immutable
 
 Immutable objects have many advantages such simplicity, safety, etc. But it requires a separate object for each distinct value, and too many objects might cause high cost of garbage collection. There should be a balance when choosing between mutable and immutable.
 
@@ -141,7 +141,7 @@ There are other situations when mutable objects are desirable. For example passi
 
 Why String is Immutable?
 
-##9. Constructor of Super and Sub
+###9. Constructor of Super and Sub
 
 This compilation error occurs because the default super constructor is undefined. In Java, if a class does not define a constructor, compiler will insert a default no-argument constructor for the class by default. If a constructor is defined in Super class, in this case Super(String s), compiler will not insert the default no-argument constructor. This is the situation for the Super class above.
 
@@ -158,7 +158,7 @@ public Super(){
 
 Constructor of Super and Sub
 
-##10. "" or Constructor?
+###10. "" or Constructor?
 
 String can be created by two ways:
 
