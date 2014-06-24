@@ -6,6 +6,7 @@ comments: true
 下面总结了10个Java程序员最易犯的错误.
 
 ##1.Array与ArrayList转换
+
 将一个数组array转换为ArrayList,程序猿通常这样做：
 {% highlight java %}
 List<String> list = Arrays.asList(arr);
@@ -13,13 +14,17 @@ List<String> list = Arrays.asList(arr);
 
 
 
-Arrays.asList() 会返回一个Arrays的内部私有静态类的对象,该内部类实现了List接口,而不是java.util.ArrayList. java.util.Arrays.ArrayList类包含方法：set(), get(), contains(),但是不包含添加元素的方法,因此该list对象的定长的.如果要创建一个真正的ArrayList,你需要以下操作：
+Arrays.asList() 会返回一个Arrays的内部私有静态类的对象.
+该内部类实现了List接口,而不是java.util.ArrayList.
+java.util.Arrays.ArrayList类包含方法：set(), get(), contains(),但是不包含添加元素的方法,因此该list对象的定长的.
+如果要创建一个真正的ArrayList,你需要以下操作：
 {% highlight java %}
 ArrayList<String> arrayList = new ArrayList<String>(Arrays.asList(arr));
 {% endhighlight %}
 ArrayList的构造函数可以接收Collection类型,Collection同样是java.util.Arrays.ArrayList的基类.
 
 ##2. 检测Array中是否包含某值
+
 可以通过以下方式实现:
 {% highlight java %}
 Set<String> set = new HashSet<String>(Arrays.asList(arr));
@@ -41,6 +46,7 @@ return false;
 相较于第二段代码,第一段有更好的可读性.
 
 ##3.通过循环在List中移除元素
+
 以下代码为在循环迭代中移除元素:
 {% highlight java %}
 ArrayList<String> list = new ArrayList<String>(Arrays.asList("a", "b", "c", "d"));
