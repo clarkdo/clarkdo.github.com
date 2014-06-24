@@ -5,7 +5,7 @@ comments: true
 ---
 下面总结了10个Java程序员最易犯的错误.
 
-###1.Array与ArrayList转换
+###1.Array与ArrayList转换  
 
 将一个数组array转换为ArrayList,程序猿通常这样做：
 {% highlight java %}
@@ -14,23 +14,23 @@ List<String> list = Arrays.asList(arr);
 
 
 
-Arrays.asList() 会返回一个Arrays的内部私有静态类的对象.
-该内部类实现了List接口,而不是java.util.ArrayList.
-java.util.Arrays.ArrayList类包含方法：set(), get(), contains(),但是不包含添加元素的方法,因此该list对象的定长的.
+Arrays.asList() 会返回一个Arrays的内部私有静态类的对象.  
+该内部类实现了List接口,而不是java.util.ArrayList.  
+java.util.Arrays.ArrayList类包含方法：set(), get(), contains(),但是不包含添加元素的方法,因此该list对象的定长的.  
 如果要创建一个真正的ArrayList,你需要以下操作：
 {% highlight java %}
 ArrayList<String> arrayList = new ArrayList<String>(Arrays.asList(arr));
 {% endhighlight %}
-ArrayList的构造函数可以接收Collection类型,Collection同样是java.util.Arrays.ArrayList的基类.
+ArrayList的构造函数可以接收Collection类型,Collection同样是java.util.Arrays.ArrayList的基类.  
 
-###2. 检测Array中是否包含某值
+###2. 检测Array中是否包含某值  
 
 可以通过以下方式实现:
 {% highlight java %}
 Set<String> set = new HashSet<String>(Arrays.asList(arr));
 return set.contains(targetValue);
 {% endhighlight %}
-以上代码是可用的, 但是没有必要先将List转化为Set,这样会带来额外的时间开销.
+以上代码是可用的, 但是没有必要先将List转化为Set,这样会带来额外的时间开销.  
 因此,可以简化为以下方式：
 {% highlight java %}
 Arrays.asList(arr).contains(targetValue);
@@ -45,7 +45,7 @@ return false;
 {% endhighlight %}
 相较于第二段代码,第一段有更好的可读性.
 
-###3.通过循环在List中移除元素
+###3.通过循环在List中移除元素  
 
 以下代码为在循环迭代中移除元素:
 {% highlight java %}
@@ -57,9 +57,9 @@ System.out.println(list);
 {% endhighlight %}
 输出为:
 [b, d]
-这个方法中有一个严重的问题.当元素被移除后,list的大小和索引会发生变化.因此,如果想通过遍历索引来删除多个集合中的元素,以上代码不会起到相应的作用.
+这个方法中有一个严重的问题.当元素被移除后,list的大小和索引会发生变化.  因此,如果想通过遍历索引来删除多个集合中的元素,以上代码不会起到相应的作用.  
 
-你或许已经了解可以通过迭代器来删除元素,并且你也知道增强型for循环的工作原理就是迭代器.
+你或许已经了解可以通过迭代器来删除元素,并且你也知道增强型for循环的工作原理就是迭代器.  
 但是实际上这是错误的.参考以下代码:
 {% highlight java %}
 ArrayList<String> list = new ArrayList<String>(Arrays.asList("a", "b", "c", "d"));
@@ -69,7 +69,7 @@ for (String s : list) {
     list.remove(s);
 }
 {% endhighlight %}
-这段代码将会抛出ConcurrentModificationException.
+这段代码将会抛出ConcurrentModificationException.  
 
 替换为以下代码,则功能可用:
 {% highlight java %}
