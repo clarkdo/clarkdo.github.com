@@ -14,8 +14,7 @@ List<String> list = Arrays.asList(arr);
 
 
 
-Arrays.asList() 会返回一个Arrays的内部私有静态类的对象.  
-该内部类实现了List接口,而不是java.util.ArrayList.  
+Arrays.asList() 会返回一个Arrays的内部私有静态类的对象.该内部类实现了List接口,而不是java.util.ArrayList.  
 java.util.Arrays.ArrayList类包含方法：set(), get(), contains(),但是不包含添加元素的方法,因此该list对象的定长的.  
 如果要创建一个真正的ArrayList,你需要以下操作：
 {% highlight java %}
@@ -55,8 +54,8 @@ for (int i = 0; i < list.size(); i++) {
 }
 System.out.println(list);
 {% endhighlight %}
-输出为:
-[b, d]
+输出为:  
+[b, d]  
 这个方法中有一个严重的问题.当元素被移除后,list的大小和索引会发生变化.  因此,如果想通过遍历索引来删除多个集合中的元素,以上代码不会起到相应的作用.  
 
 你或许已经了解可以通过迭代器来删除元素,并且你也知道增强型for循环的工作原理就是迭代器.  
