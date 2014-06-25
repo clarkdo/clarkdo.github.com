@@ -86,18 +86,14 @@ while (iter.hasNext()) {
 {% endhighlight %}
 .next()的调用必须发生在.remove()之前. 在增强for循环中,编译器将会使.next()的调用发生在remove操作之后, 这将会引发ConcurrentModificationException. 如果有兴趣,可用参考ArrayList.iterator()的源码.
 
-###4. Hashtable vs HashMap
-
-By conventions in algorithm, Hashtable is the name of the data structure. But in Java, the data structure's name is HashMap. One of the key differences between Hashtable and HashMap is that Hashtable is synchronized. So very often you don't need Hashtable, instead HashMap should be used.
-
-HashMap vs. TreeMap vs. Hashtable vs. LinkedHashMap
-Top 10 questions about Map
-
-###5. Use Raw Type of Collection
-
-In Java, raw type and unbounded wildcard type are easy to mixed together. Take Set for example, Set is raw type, while Set<?> is unbounded wildcard type.
-
-Consider the following code which uses a raw type List as a parameter:
+###4.Hashtable vs HashMap
+依照算法中的约定,Hashtable是一种数据结构的名称.但是在Java中,这种数据结果的名称是HashMap.Hashtable和HashMap一个最重要的区别在于Hashtable是线程安全的.因此,通常你不会用到Hashtable,取而代之的是应该应用HashMap.
+  
+###5. Collection中的原始类型
+  
+Java中, 原生类型与无界通配符类型很容易混入到一起. 以Set为例, Set是原生类型, 而Set<?>则是无界通配符类型
+  
+参考以下代码,它将原生类型作为方法参数:
 
 {% highlight java %}
 public static void add(List list, Object o){
@@ -109,59 +105,59 @@ public static void main(String[] args){
   String s = list.get(0);
 }
 {% endhighlight %}
-This code will throw an exception:
+这段代码将抛出以下异常:
 
 Exception in thread "main" java.lang.ClassCastException: java.lang.Integer cannot be cast to java.lang.String
   at ...
-Using raw type collection is dangerous as the raw type collections skip the generic type checking and not safe. There are huge differences between Set, Set<?>, and Set<Object>. Check out
-Raw type vs. Unbounded wildcard and Type Erasure.
+使用原生类型是很危险的,因为原生类型的集合会跳过泛型检查且不安全.因此,Set, Set<?> 和 Set<Object>有很大的区别.
 
-###6. Access Level
+###6.访问级别
 
-Very often developers use public for class field. It is easy to get the field value by directly referencing, but this is a very bad design. The rule of thumb is giving access level for members as low as possible.
+程序猿们通常会使用public来修饰类属性. 这样便于通过直接引用来获取属性值, 但这却是一个很糟糕的设计. 最佳实践应为:尽可能使用低级别的访问权限.
 
-public, default, protected, and private
+public, default, protected, 和private
 
-###7. ArrayList vs. LinkedList
-
-When developers do not know the difference between ArrayList and LinkedList, they often use ArrayList, because it looks familiar. However, there is a huge performance difference between them. In brief, LinkedList should be preferred if there are a large number of add/remove operations and there are not a lot of random access operations. Check out ArrayList vs. LinkedList to get more information about their performance if this is new to you.
+###7.ArrayList vs. LinkedList
+  
+当程序猿们不了解ArrayList和LinkedList的区别时候, 他们通常会使用ArrayList, 应为它看起来更加熟悉. 然后, 他们之间会有巨大的性能差别. 大致上, 在有大量增/删操作,并且没有频繁随机取值的前提下, LinkedList是一个更优的选择.
 
 ###8. Mutable vs. Immutable
+  
 
-Immutable objects have many advantages such simplicity, safety, etc. But it requires a separate object for each distinct value, and too many objects might cause high cost of garbage collection. There should be a balance when choosing between mutable and immutable.
-
-In general, mutable objects are used to avoid producing too many intermediate objects. One classic example is concatenating a large number of strings. If you use an immutable string, you would produce a lot of objects that are eligible for garbage collection immediately. This wastes time and energy on the CPU, using a mutable object the right solution (e.g. StringBuilder).
-
+不可变对象有很多的有优点,诸如:简单, 安全等等. 但是对于每一个不同的值, 都需要一个单独的对象, 并且大量的对象会导致垃圾收集的巨大开销. 因此在可变与不可变对象的选择上,应该寻求一个平衡.
+  
+通常,可变对象被用于避免产生大量的中间对象. 一个经典的例子是利用可变对象串联大量的字符串. 如果你用不可变对象, 将会产生大量的,会立即被垃圾回收的对象. 这种情况造成大量的耗时与CPU的开销, 因此可变对象是正确的解决方案(例如:StringBuilder).
+  
 {% highlight java %}
 String result="";
 for(String s: arr){
   result = result + s;
 }
 {% endhighlight %}
-There are other situations when mutable objects are desirable. For example passing mutable objects into methods lets you collect multiple results without jumping through too many syntactic hoops. Another example is sorting and filtering: of course, you could make a method that takes the original collection, and returns a sorted one, but that would become extremely wasteful for larger collections. (From dasblinkenlight's answer on Stack Overflow)
-
-Why String is Immutable?
+还存在一些其他的场景会应用到可变对象. 例如:将可变对象传进方法中, 可以收集多个结果,而不需要经过大量的syntactic hoops. 另一个例子是排序和过滤: 当然, 你可以创建一个方法来保存原始集合,之后返回一个排序后的集合, 但是对于更大的集合来说,这种做法的成本很高(From dasblinkenlight's answer on Stack Overflow).
 
 ###9. Constructor of Super and Sub
+  
+由于没有定义父类的默认构造方法而引起的编译错误是很常见的. 在Java中, 如果一个类中没有定义构造方法, 编译器会默认天假一个无参的构造方法. 如果父类中定一个的构造器, 例如: Super(String s), 编译器则不会自动添加无参构造方法. 这就是上述父类的场景.
+  
+子类的构造方法, 有参与无参的方法都会调用父类无参构造方法. 由于编译器会尝试在子类的2个构造方法内添加super(), 但是父类中没有定义默认的构造方法, 编译器会产生编译错误.
+..
+为了修复此问题:
 
-This compilation error occurs because the default super constructor is undefined. In Java, if a class does not define a constructor, compiler will insert a default no-argument constructor for the class by default. If a constructor is defined in Super class, in this case Super(String s), compiler will not insert the default no-argument constructor. This is the situation for the Super class above.
-
-The constructors of the Sub class, either with-argument or no-argument, will call the no-argument Super constructor. Since compiler tries to insert super() to the 2 constructors in the Sub class, but the Super's default constructor is not defined, compiler reports the error message.
-
-To fix this problem, simply 1) add a Super() constructor to the Super class like
+1) 在父类中添加Super() 构造方法:
 
 {% highlight java %}
 public Super(){
     System.out.println("Super");
 }
 {% endhighlight %}
-, or 2) remove the self-defined Super constructor, or 3) add super(value) to sub constructors.
 
-Constructor of Super and Sub
+2) 移除父类中自定义的构造方法remove.
+3) 子类构造函数中调用super(value).
 
 ###10. "" or Constructor?
-
-String can be created by two ways:
+  
+字符串可以通过两种方式进行创建:
 
 {% highlight java %}
 //1. use double quotes
@@ -169,9 +165,9 @@ String x = "abc";
 //2. use constructor
 String y = new String("abc");
 {% endhighlight %}
-What is the difference?
+以上两者有何区别?
 
-The following examples can provide a quick answer:
+以下例子给出一个直接的答案:
 
 {% highlight java %}
 String a = "abcd";
@@ -184,8 +180,7 @@ String d = new String("abcd");
 System.out.println(c == d);  // False
 System.out.println(c.equals(d)); // True
 {% endhighlight %}
-For more details about how they are allocated in memory, check out Create Java String Using ” ” or Constructor?.
 
-Future Work
-
-The list is based on my analysis of a large number of open source projects on GitHub, Stack Overflow questions, and popular Google queries. There is no evaluation to prove that they are precisely the top 10, but definitely they are very common. Please leave your comment, if you don’t agree with any part. I would really appreciate it if you could point out some other mistakes that are more common.
+###后记
+  
+以上的列表,是基于我对于GitHub中大量开源项目,StackOverflow中提问以及谷歌中热门搜索的分析. 并没有依据来证明它们是就是top 10, 但是的确是非常普遍的问题.如果有任何疑问, 请在下方进行评论.非常感谢您来指出的一些更加常见的错误,
