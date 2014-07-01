@@ -1,0 +1,111 @@
+---
+layout: post
+title: JS中的逗号运算符(译)
+comments: true
+---
+###概述
+逗号运算符会依次执行每个操作数(从左至右),并且返回最后一个操作数的值
+
+
+
+###语法
+expr1, expr2, expr3...
+  
+###参数
+expr1, expr2, expr3...
+参数支持任意表达式.
+  
+###描述
+当你需要在某个表达式中同时包含多个表达式的运算时,你可以选择逗号表达式. 它最广泛的应用场景是在循环中可提供多个参数.
+  
+###例子
+a是一个包含10个元素的2维数组, 下列代码中应用逗号表达式来一次性添加两个变量. 需要注意的是:在var语句块中的逗号并不是逗号表达式,因为内部没有包含表达式. 其实, 它是var语句块中的一个特殊字符,用于合并多个语句. 实际上, 这个逗号与逗号表达式几乎是相同的. 这段代码输出数组中对角线上的元素.
+
+{% highlight javascript %}
+List<String> list = Arrays.asList(arr);
+for (var i = 0, j = 9; i <= 9; i++, j--)
+  document.writeln("a[" + i + "][" + j + "] = " + a[i][j]); 
+{% endhighlight %}
+  
+###规范
+
+<table>
+  <thead>
+    <tr>
+      <th>Specification</th>
+      <th>Status</th>
+      <th>Comment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ECMAScript 1st Edition.</td>
+      <td>Standard</td>
+      <td>Initial definition.</td>
+    </tr>
+    <tr>
+      <td>[ECMAScript Language Specification 5.1th Edition (ECMA-262)](http://www.ecma-international.org/ecma-262/5.1/#sec-11.14)</td>
+      <td>Standard</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>[ECMAScript Language Specification 6th Edition (ECMA-262)](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-comma-operator)</td>
+      <td>Draft</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+###浏览器兼容性
+  
+桌面端:
+
+<table>
+  <thead>
+    <tr>
+      <td>Feature</td>
+      <td>Chrome</td>
+      <td>Firefox (Gecko)</td>
+      <td>Internet Explorer</td>
+      <td>Opera</td>
+      <td>Safari</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Basic support</td>
+      <td>(Yes)</td>
+      <td>(Yes)</td>
+      <td>(Yes)</td>
+      <td>(Yes)</td>
+      <td>(Yes)</td>
+    </tr>
+  </tbody>
+</table>
+  
+移动端:
+
+<table>
+  <thead>
+    <tr>
+      <td>Feature</td>
+      <td>Android</td>
+      <td>Chrome for Android</td>
+      <td>Firefox Mobile (Gecko)</td>
+      <td>IE Mobile</td>
+      <td>Opera Mobile</td>
+      <td>Safari Mobile</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Basic support</td>
+      <td>(Yes)</td>
+      <td>(Yes)</td>
+      <td>(Yes)</td>
+      <td>(Yes)</td>
+      <td>(Yes)</td>
+      <td>(Yes)</td>
+    </tr>
+  </tbody>
+</table>
