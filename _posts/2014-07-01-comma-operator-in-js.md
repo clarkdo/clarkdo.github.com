@@ -109,3 +109,5 @@ for (var i = 0, j = 9; i <= 9; i++, j--)
     </tr>
   </tbody>
 </table>
+
+**[原文地址](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comma_Operator)**
