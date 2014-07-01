@@ -49,7 +49,7 @@ for (var i = 0, j = 9; i <= 9; i++, j--)
       <td></td>
     </tr>
     <tr>
-      <td><a href="http://people.mozilla.org/~jorendorff/es6-draft.html#sec-comma-operator">ECMAScript Language Specification 6th Edition (ECMA-262)</a>/td>
+      <td><a href="http://people.mozilla.org/~jorendorff/es6-draft.html#sec-comma-operator">ECMAScript Language Specification 6th Edition (ECMA-262)</a></td>
       <td>Draft</td>
       <td></td>
     </tr>
