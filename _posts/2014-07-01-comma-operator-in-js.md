@@ -44,12 +44,12 @@ for (var i = 0, j = 9; i <= 9; i++, j--)
       <td>Initial definition.</td>
     </tr>
     <tr>
-      <td>[ECMAScript Language Specification 5.1th Edition (ECMA-262)](http://www.ecma-international.org/ecma-262/5.1/#sec-11.14)</td>
+      <td><a href="http://www.ecma-international.org/ecma-262/5.1/#sec-11.14">ECMAScript Language Specification 5.1th Edition (ECMA-262)</a></td>
       <td>Standard</td>
       <td></td>
     </tr>
     <tr>
-      <td>[ECMAScript Language Specification 6th Edition (ECMA-262)](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-comma-operator)</td>
+      <td><a href="http://people.mozilla.org/~jorendorff/es6-draft.html#sec-comma-operator">ECMAScript Language Specification 6th Edition (ECMA-262)</a>/td>
       <td>Draft</td>
       <td></td>
     </tr>
@@ -58,7 +58,7 @@ for (var i = 0, j = 9; i <= 9; i++, j--)
 
 ###浏览器兼容性
   
-桌面端:
+**桌面端:**
 
 <table>
   <thead>
@@ -82,8 +82,8 @@ for (var i = 0, j = 9; i <= 9; i++, j--)
     </tr>
   </tbody>
 </table>
-  
-移动端:
+
+**移动端:**
 
 <table>
   <thead>
