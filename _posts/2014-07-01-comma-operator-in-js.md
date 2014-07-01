@@ -44,12 +44,12 @@ for (var i = 0, j = 9; i <= 9; i++, j--)
       <td>Initial definition.</td>
     </tr>
     <tr>
-      <td><a href="http://www.ecma-international.org/ecma-262/5.1/#sec-11.14">ECMAScript Language Specification 5.1th Edition (ECMA-262)</a></td>
+      <td><a href="http://www.ecma-international.org/ecma-262/5.1/#sec-11.14" target="_blank">ECMAScript Language Specification 5.1th Edition (ECMA-262)</a></td>
       <td>Standard</td>
       <td></td>
     </tr>
     <tr>
-      <td><a href="http://people.mozilla.org/~jorendorff/es6-draft.html#sec-comma-operator">ECMAScript Language Specification 6th Edition (ECMA-262)</a></td>
+      <td><a href="http://people.mozilla.org/~jorendorff/es6-draft.html#sec-comma-operator" target="_blank">ECMAScript Language Specification 6th Edition (ECMA-262)</a></td>
       <td>Draft</td>
       <td></td>
     </tr>
