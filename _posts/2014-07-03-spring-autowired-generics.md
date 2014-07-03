@@ -10,6 +10,8 @@ Spring3.2中,已经可以注入包含泛型的List,通过@Autowired注解就可�
 private List<Type> beans; 
 {% endhighlight %}
 
+
+
 Spring通过GenericCollectionTypeResolver来判断Collection中的泛型类型.
 
 在Spring源码的ListFactoryBean, MapFactoryBean内的createInstance方法中, 都包含GenericCollectionTypeResolver的特殊处理.
