@@ -6,17 +6,15 @@ title: Categories
     {% for cat in site.categories %}
     <h2>{{ cat | first }}</h2>
     <ul class="posts">
-      {% for posts in site.categories[cat] %}
-        {% for post in posts %}
-          <li>
-            <span class="title-right">
-              {{ post.date | date: "%m/%d/%Y" }}
-            </span>
-            <a href="{{ post.url }}">
-              {{ post.title }}
-            </a>
-          </li>
-        {% endfor %}
+      {% for post in site.categories[cat] %}
+        <li>
+          <span class="title-right">
+            {{ post.date | date: "%m/%d/%Y" }}
+          </span>
+          <a href="{{ post.url }}">
+            {{ post.title }}
+          </a>
+        </li>
       {% endfor %}
     </ul>
     {% endfor %}
