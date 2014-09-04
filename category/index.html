@@ -4,7 +4,7 @@ title: Categories
 ---
 <div class="posts">
     {% for cat in site.categories %}
-    <h2>{{ cat | first }}({{ cat | last | size }})</h2>
+    <h2><a href="{{ cat | first }}">{{ cat | first }}({{ cat | last | size }})</a></h2>
     <ul class="posts">
       {% for post in cat.last %}
         <li>
