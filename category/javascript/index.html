@@ -1,0 +1,21 @@
+---
+layout: page
+title: Categories
+---
+<div class="posts">
+    {% for cat in site.categories.JavaScript %}
+    <h2>{{ cat | first }}({{ cat | last | size }})</h2>
+    <ul class="posts">
+      {% for post in cat.last %}
+        <li>
+          <span class="title-right">
+            {{ post.date | date: "%m/%d/%Y" }}
+          </span>
+          <a href="{{ post.url }}">
+            {{ post.title }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+    {% endfor %}
+</div>
