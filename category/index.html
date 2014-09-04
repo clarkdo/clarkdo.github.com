@@ -4,8 +4,7 @@ title: Categories
 ---
 <div class="posts">
     {% for cat in site.categories %}
-    <h2>{{ cat | first }}</h2>
-    </span>{{ cat | last | size }}</span>
+    <h2>{{ cat | first }}({{ cat | last | size }})</h2>
     <ul class="posts">
       {% for post in cat.last %}
         <li>
