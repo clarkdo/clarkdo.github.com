@@ -5,8 +5,9 @@ title: Categories
 <div class="posts">
     {% for cat in site.categories %}
     <h2>{{ cat | first }}</h2>
+    </span>{{ cat | last | size }}</span>
     <ul class="posts">
-      {% for post in site.categories[cat] %}
+      {% for post in cat.last %}
         <li>
           <span class="title-right">
             {{ post.date | date: "%m/%d/%Y" }}
