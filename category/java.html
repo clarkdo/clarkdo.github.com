@@ -2,8 +2,11 @@
 layout: default
 title: java
 ---
+<script type="text/javascript">
+var a = "dasd";
+</script>
 <div class="posts">
-    <h2>{{page.title}}</h2>
+    <h2>{{a}}--{{page.title}}</h2>
     <ul class="posts">
       {% for post in site.categories[page.title] %}
         <li>
