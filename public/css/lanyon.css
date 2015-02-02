@@ -82,24 +82,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 @media (min-width: 56rem) {
   .container {
-    max-width: 38rem;
+    max-width: 50rem;
   }
-}
-
-
-
-.postcontainer {
-    max-width: 28rem;
-}
-@media (min-width: 38rem) {
-    .postcontainer {
-        max-width: 32rem;
-    }
-}
-@media (min-width: 56rem) {
-    .postcontainer {
-        max-width: 50rem;
-    }
 }
 
 
