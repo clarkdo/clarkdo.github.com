@@ -147,7 +147,7 @@ abbr[title] {
 /* Code */
 code,
 pre {
-  font-family: RobotoDraft, "Helvetica Neue", "Helvetica Neue", Arial, sans-serif;
+  font-family: SourceCodePro-Medium, 'ＭＳ ゴシック', 'MS Gothic', monospace;
 }
 code {
   padding: .25em .5em;
