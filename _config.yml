@@ -9,7 +9,7 @@ permalink:        pretty
 baseurl:          "http://clarkdo.github.io/"
 title:            Clark To Do
 tagline:          'The blog of Clark'
-description:      '<p><a href="http://weibo.com/u/1802092940" target="_blank">@clarkdo</a></p> <p>Clark Blog </p>'
+description:      '<p><a href="http://www.weibo.com/u/2127101144" target="_blank">@clarkdo</a></p> <p>Clark Blog </p>'
 url:              http://clarkdo.github.io/
 paginate: 10
 paginate_path: "page:num"
@@ -17,7 +17,7 @@ excerpt_separator: "\n\n\n"
 
 author:
   name:           'Clark Du'
-  url:            http://weibo.com/u/1802092940
+  url:            http://www.weibo.com/u/2127101144
 
 # Custom vars
 version:          1.0.0
