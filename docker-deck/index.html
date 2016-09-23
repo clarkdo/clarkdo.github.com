@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Docker与持续集成 | by Clark Du</title>
+    <meta name="description" content="Docker与持续集成">
+    <meta name="author" content="Mariusz Nowak" />
+
+    <link rel="stylesheet" href="css/font.css" />
+    <link rel="stylesheet" href="css/default.css" />
+    <link rel="stylesheet" href="highlight/styles/sunburst.css">
+</head>
+
+<body>
+    <div id="impress" class="impress-not-supported">
+        <div id="fm1" class="fallback-message hidden">
+            <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+            <p>For the best experience please use the latest <b>Chrome</b> or
+                <b>Safari</b> browser. Firefox 10 (to be released soon) will also handle it.</p>
+        </div>
+        <div id="fm2" class="fallback-message">
+            <p>If you have fast machine and recent Google Chrome or Safari installed, please check <a href="3d/index.html">a bit more "moving" version of that presentation</a></p>
+            <p style="text-align:center"><big>Otherwise, scroll down to see the slides</big></p>
+        </div>
+
+        <div id="docker-deck" class="step">
+            <h1>微架构与容器化</br>的持续交付</h1>
+            <p class="footer">
+                <a href="http://form.mikecrm.com/35r6OP">时速云技术沙龙</a> ·
+                <span>Sep 2016</span> ·
+                <span>杜 欣</span>
+            </p>
+        </div>
+
+        <div id="micro-serice" class="step">
+            <h2>微服务</h2>
+        </div>
+
+        <div id="services" class="step">
+            <h3 class="lone">Container-less</h3>
+            <h3 class="lone">Self-contained</h3>
+            <h3 class="lone">In-container</h3>
+        </div>
+
+        <div id="container-less" class="step smaller">
+            <p style="text-align: center"><b>Container-less: 单一JAR部署</b></p>
+            <p style="text-align: center"><img style="width:80%" src="images/container-less.png" /></p>
+        </div>
+
+        <div id="self-contained" class="step smaller">
+            <p style="text-align: center"><b>Self-contained: 嵌入式框架(<b>Spring Boot、Wildfly Swarm</b>)</b>
+            </p>
+            <p style="text-align: center"><img style="width:80%" src="images/self-contained.png" /></p>
+        </div>
+
+        <div id="in-container" class="step smaller">
+            <p style="text-align: center"><b>In-container: 完整的Java EE容器</b></p>
+            <p style="text-align: center"><img style="width:80%" src="images/in-container.png" /></p>
+        </div>
+
+        <div id="why-micro-service" class="step">
+            <h2>Why 微服务 ?</h2>
+        </div>
+
+        <div id="why-micro-service-details" class="step" style="left:200px;">
+            <p class="substep"><b>传统项目</b></p>
+            <p class="substep">项目是多个系统的堆叠:</p>
+            <ul>
+                <li class="substep">扩展性低, 无法快速响应变化, 构建慢, 运维成本高</li>
+            </ul>
+            <p class="substep"><b>SOA 架构</b></p>
+            <ul>
+                <li class="substep">更加敏捷, 独立, 但是改动必须适应整体设计</li>
+                <li class="substep">总线模式, 强绑定技术栈(Java EE), 增加对接, 改造成本</li>
+            </ul>
+            <p class="substep"><b>微服务</b></p>
+            <ul>
+                <li class="substep">自由创建服务, 持续部署, 风险降低</li>
+                <li class="substep">服务异构性, 有针对性的技术方案, 轻量的通信模式</li>
+            </ul>
+        </div>
+
+        <div id="archi-compare" class="step">
+            <p style="text-align: center"><b>三种架构风格比较</b></p>
+            <p style="text-align: center"><img style="width: 100%;" src="images/services-evolution.jpg" /></p>
+
+        </div>
+
+        <!-- <div id="archi-vs" class="step">
+            <p style="text-align: center"><img style="width: 100%;" src="images/ms-vs-monolith.png" /></p>
+        </div> -->
+
+        <div id="where-ms" class="step">
+            <h2>Where 微服务 ?</h2>
+        </div>
+
+        <div id="where-ms-details" class="step" style="left:200px">
+            <ul>
+                <li class="substep">对速度要求高, 需求变化非常频繁</li>
+                <li class="substep">变更发生在应用的不同区域, 功能隔离与快捷部署的<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;需求远高于模块间聚合性的要求</li>
+                <li class="substep">功能可以简单的分割为多个独立的组件</li>
+            </ul>
+        </div>
+
+        <div id="entire-archi" class="step">
+            <p style="text-align: center"><b>微服务典型架构</b></p>
+            <p style="text-align: center"><img style="width:1200px;height:700px;" src="images/entire-architecture.png" /></p>
+        </div>
+
+        <div id="our-attempt" class="step">
+            <h2>我们的尝试</h2>
+        </div>
+
+        <div id="our-attempt-details" class="step" style="left:200px">
+            <ul>
+                <li class="substep">业务横向拆分</li>
+                <li class="substep">构建自治型, 专注型的服务应用</li>
+                <li class="substep">服务间灵活稳定的相互方式</li>
+                <li class="substep">保证持续部署及运行能力</li>
+                <li class="substep">实践可行的服务注册、发现、负载均衡方案</li>
+                <li class="substep">完善日志监控, 性能度量</li>
+            </ul>
+        </div>
+
+        <div id="cfc-archi" class="step">
+            <p style="text-align: center"><b>众蓝影云微服务架构</b></p>
+            <p style="text-align: center"><img style="width:95%" src="images/cfc-archi.png" /></p>
+        </div>
+
+        <div id="docker" class="step">
+            <h2>Docker</h2>
+        </div>
+
+        <div id="challenges" class="step">
+            <h2>目前的挑战</h2>
+        </div>
+
+        <div id="challenges-details" class="step" style="left:200px">
+            <p class="substep"><b>面临的问题</b></p>
+            <ul>
+                <li class="substep">快速高效的RPC调用(ZeroRPC, SOAP, REST, Queues)</li>
+                <li class="substep">如何高效的部署及管理多个应用</li>
+                <li class="substep">服务间的网络管道如何管理</li>
+            </ul>
+        </div>
+
+        <div id="challenges-solutions" class="step" style="left:200px">
+            <p class="substep"><b>Docker 能否为我们解决一些问题?</b></p>
+            <ul>
+                <li class="substep">配置化, 快速, 可重复式的构建服务</li>
+                <li class="substep">托管式的发布及管理服务</li>
+                <li class="substep">成熟的网络方案及集群管理策略</li>
+            </ul>
+        </div>
+
+        <div id="why-docker" class="step">
+            <h2>Why Docker ?</h2>
+        </div>
+
+        <div id="why-docker-details" class="step" style="left:100px">
+            <p>
+              <img style="width:128px;height:128px" src="images/github-pages.png" />
+              <img style="width:128px;height:128px" src="images/gitlab-logo.png" />
+              <img style="width:110px;height:128px" src="images/jenkins-logo.png" />
+              <img style="width:200px;height:120px" src="images/docker-logo.png" />
+            </p>
+            <p class="substep">与 <b>Jenkins, GitHub, Gitlab</b> 可以很好的集成</p>
+            <p class="substep">通过镜像与容器管理实现<b>托管式发布</b></p>
+            <p class="substep">无需处理环境<b>不一致性</b></p>
+            <p class="substep">具备成熟的<b>网络管理</b>和<b>集群解决</b>方案(Flannel, Swarm, Kubernetes, Mesos, Marathon)</p>
+            <p class="substep"><b>生态环境</b>发展迅速, 通过<b>CaaS</b>平台交付灵活,敏捷,可控的应用</p>
+        </div>
+
+        <div id="docker-flow" class="step" style="top: 20px;left:100px">
+            <p class="substep" style="margin-top:0px">开发: 无需关心对平台和语言的依赖性, 加强了技术灵活度</p>
+            <p class="substep">交付: 开发可以自己设计<b>开发-测试-发布</b>的整个流程</p>
+            <p class="substep" style="margin-bottom:0px">运行: 对于弹性伸缩, 安全性和可靠性也有广泛的支持</p>
+            <p>
+              <img style="width:80%" src="images/docker-flow1.png" />
+            </p>
+        </div>
+
+        <div id="ci" class="step">
+            <h2>持续集成(CI)</h2>
+        </div>
+
+        <div id="ci-workflow" class="step" style="top: 20px;left:100px">
+          <ul style="margin-bottom:-40px">
+              <li class="substep" style="margin: 0 0;">开发人员向GitHub/Gitlab<b>推送</b>代码或提交<b>合并请求</b></li>
+              <li class="substep" style="margin: 0 0;">GitHub/Gitlab <b>Hook</b>自动触发Jenkins增量构建</li>
+              <li class="substep" style="margin: 0 0;">Jenkins构建<b>Docker镜像</b>, 启动<b>Docker容器</b>, 进行测试</li>
+              <li class="substep" style="margin: 0 0;">测试通过后, 合并代码, 推送至镜像中心</li>
+          </ul>
+            <p style="margin-top:40px;">
+              <img style="width:80%;" src="images/docker-workflow.png" />
+            </p>
+        </div>
+
+        <div id="cfc-ci" class="step">
+        <p style="text-align: center;margin-bottom:0px"><b>众蓝影云持续集成/交付流程</b></p>
+            <p style="text-align: center;margin-top:0px"><img style="width:100%;" src="images/cfc-ci.jpg" /></p>
+        </div>
+
+        <!-- <div id="cd" class="step">
+            <h2>持续交付(CD)</h2>
+        </div> -->
+
+        <div id="questions" class="step">
+            <h2>Questions ?</h2>
+        </div>
+
+        <div id="thank-you" class="step final" style="width: 860px;">
+            <h2>Thank you !</h2>
+
+            <p class="name">杜欣 Clark</p>
+            <p class="email"><a href="mailto:duxin@cfilmcloud.com">duxin@cfilmcloud.com</a></p>
+            <p class="weibo p-a">
+                <a href="mailto:duxin@cfilmcloud.com"><img src="images/weibo.png" /> @clarkdo</a>
+            </p>
+            <p class="blog p-a">
+                <a href="http://clarkdo.github.io/"><img src="images/github-pages.png" /> clarkdo.github.io</a>
+            </p>
+            <p class="github p-a">
+                <a href="https://github.com/clarkdo"><img src="images/github.png" /> github.com/clarkdo</a>
+            </p>
+            <div class="wechat">
+                <p>CFC Cafe</p>
+                <img src="images/wechat.png" />
+            </div>
+        </div>
+
+        <div id="overview" class="step" data-x="3400" data-y="2000" data-scale="10"></div>
+        <div class="hint">
+            <p>Use a spacebar or arrow keys to navigate</p>
+        </div>
+
+    <div id="timer"></div>
+
+    <script src="highlight/highlight.pack.js"></script>
+    <script src="js/impress.js"></script>
+    <script src="js/default.js"></script>
+</body>
+
+</html>
