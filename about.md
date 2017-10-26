@@ -8,7 +8,7 @@ title: 关于 Clark
 ## 信息
 
 * [Github](https://github.com/clarkdo)
-* [Weibo](http://weibo.com/u/2127101144)
+* [Weibo](//weibo.com/u/2127101144)
 * [Twitter](https://twitter.com/clark_do)
 
 ## 个人简介

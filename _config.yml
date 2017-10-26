@@ -6,18 +6,18 @@ highlighter:      rouge
 permalink:        pretty
 
 # Setup
-baseurl:          "http://clarkdo.github.io/"
+baseurl:          "https://clarkdo.js.org/"
 title:            Clark To Do
 tagline:          'The blog of Clark'
-description:      '<p><a href="http://www.weibo.com/u/2127101144" target="_blank">@clarkdo</a></p> <p>Clark Blog </p>'
-url:              http://clarkdo.github.io/
+description:      '<p><a href="//www.weibo.com/u/2127101144" target="_blank">@clarkdo</a></p> <p>Clark Blog </p>'
+url:              https://clarkdo.js.org/
 paginate: 10
 paginate_path: "page:num"
 excerpt_separator: "\n\n\n"
 
 author:
   name:           'Clark Du'
-  url:            http://www.weibo.com/u/2127101144
+  url:            //www.weibo.com/u/2127101144
 
 # Custom vars
 version:          1.0.0
